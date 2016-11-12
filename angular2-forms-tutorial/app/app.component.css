@@ -1,0 +1,9 @@
+header section {
+  display: inline-block;
+  width: 60%;
+}
+header nav {
+  width: 40%;
+  float: right;
+  margin-top: 20px;
+}

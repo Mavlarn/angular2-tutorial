@@ -1,0 +1,18 @@
+/* Master Styles */
+h1 {
+  color: #369; 
+  font-size: 250%;
+}
+h2, h3 { 
+  color: #444;
+  font-weight: lighter;
+}
+body { 
+  margin: 2em;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+body, input[text], button { 
+  color: #888; 
+}

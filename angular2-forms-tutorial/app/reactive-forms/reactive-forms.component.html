@@ -1,0 +1,64 @@
+<p>个人信息<small> (更新个人信息，模型驱动表单)</small></p>
+
+<div>
+    <form class="form-horizontal" [formGroup]="userForm" (ngSubmit)="logForm()">
+        <div class="form-group">
+            <button class="btn btn-default pull-right" (click)="reset()">重置</button>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">姓名:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" formControlName="name">
+                <span *ngIf="userForm.controls.name.pristine" class="label label-primary">未修改</span>
+                <span *ngIf="userForm.controls.name.dirty" class="label label-warning">已修改</span>
+                <span *ngIf="userForm.controls.name.valid" class="label label-success">有效</span>
+                <div [hidden]="userForm.controls.name.valid || userForm.controls.name.pristine" class="alert alert-danger">
+                    <p *ngIf="userForm.controls.name.errors?.minlength">姓名最小长度为3</p>
+                    <p *ngIf="userForm.controls.name.errors?.required">必须输入姓名</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">电话:</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" formControlName="mobile">
+                <span *ngIf="userForm.controls.mobile.pristine" class="label label-primary">未修改</span>
+                <span *ngIf="userForm.controls.mobile.dirty" class="label label-warning">已修改</span>
+                <span *ngIf="userForm.controls.mobile.valid" class="label label-success">有效</span>
+                <div [hidden]="userForm.controls.mobile.valid || userForm.controls.mobile.pristine" class="alert alert-danger">
+                    <p *ngIf="userForm.controls.mobile.errors?.minlength || userForm.controls.mobile.errors?.maxlength">电话长度必须为11</p>
+                    <p *ngIf="userForm.controls.mobile.errors?.required">必须输入电话</p>
+                    <p *ngIf="userForm.controls.mobile.errors?.validateMobile">电话号码格式不正确</p>
+                </div>
+            </div>
+        </div>
+
+        <fieldset formGroupName="address">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">城市:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" formControlName="city">
+                    <div [hidden]="userForm.controls.address.controls.city.valid || userForm.controls.address.controls.city.pristine" class="alert alert-danger">
+                        <p *ngIf="userForm.controls.address.controls.city.errors?.required">必须输入城市</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">街道:</label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="text" formControlName="street">
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="row">
+            <button type="submit" class="btn btn-default col-sm-2">保存</button>
+            <div class="col-sm-10">
+                <p class="error-msg">{{msg}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <p>{{changeMsg | json}}</p>
+        </div>
+    </form>
+</div>

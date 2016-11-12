@@ -1,0 +1,14 @@
+<section class="todoapp">
+  <header class="header">
+    <input class="new-todo" placeholder="Get things done!" autofocus="" [(ngModel)]="newTodo.title" (keyup.enter)="addTodo()">
+  </header>
+  <section class="main" *ngIf="todos.length > 0">
+    <ul class="todo-list">
+      <todo-item *ngFor="let todo of todos" [todo]="todo">
+      </todo-item>
+    </ul>
+  </section>
+  <footer class="footer" *ngIf="todos.length > 0">
+    <span class="todo-count"><strong>{{todos.length}}</strong> {{todos.length == 1 ? 'item' : 'items'}} left</span>
+  </footer>
+</section>
