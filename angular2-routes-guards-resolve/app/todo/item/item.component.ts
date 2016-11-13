@@ -17,7 +17,7 @@ export class TodoItemComponent {
     }
 
     gotoDetail(todo) {
-        this.router.navigate(['/todo/detail', todo.id], {queryParams: {type: 'ok'}});
+        this.router.navigate(['/todo/detail', todo.id]);
     }
 
     toggleTodoComplete(todo) {

@@ -1,6 +1,10 @@
 import {Injectable} from '@angular/core';
 import {Todo} from './todo';
 
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/delay';
+
 @Injectable()
 export class TodoService {
 
@@ -35,8 +39,20 @@ export class TodoService {
     return todo;
   }
 
-  getAllTodos(): Todo[] {
-    return this.todos;
+  getAllTodos(): Observable<Todo[]> {
+    let todo1 = new Todo();
+    todo1.id = 1;
+    todo1.title = 'test task 1';
+    todo1.createdDate = new Date();
+    todo1.complete = false;
+    let todo2 = new Todo();
+    todo2.id = 2;
+    todo2.title = 'test task 2';
+    todo2.createdDate = new Date();
+    todo2.complete = false;
+
+    this.todos = [todo1, todo2];
+    return Observable.of(this.todos).delay(3000);
   }
 
   getTodoById(id: number): Todo {

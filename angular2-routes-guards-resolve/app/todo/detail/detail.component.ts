@@ -16,19 +16,7 @@ export class TodoDetailComponent implements OnInit {
                 private todoService: TodoService) {}
 
     ngOnInit() {
-       // this.route.params.forEach((params: Params) => {
-       //   let todoId = +params['id']; // (+) converts string 'id' to a number
-       //  this.selectedTodo = this.todoService.getTodoById(todoId);
-       //  if (!this.selectedTodo) {
-       //      this.router.navigate(['/todo/list']);
-       //  }
-       // });
-
         let todoId = +this.route.snapshot.params['id'];
-        let type = this.route.snapshot.params['type'];
-        console.log('type in params:' + type);
-        type = this.route.snapshot.queryParams['type'];
-        console.log('type in queryParams:' + type);
         this.selectedTodo = this.todoService.getTodoById(todoId);
         if (!this.selectedTodo) {
             this.router.navigate(['/todo/list']);

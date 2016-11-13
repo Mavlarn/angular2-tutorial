@@ -1,14 +1,17 @@
 import { Routes } from '@angular/router';
 
-import { AboutRoutes } from './about/about.routes';
+import { HomeComponent } from './home/home.component';
 import { TodoRoutes } from './todo/todo.routes';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: '/todo/list',
+        redirectTo: '/home',
         pathMatch: 'full'
     },
-  ...AboutRoutes,
-  ...TodoRoutes
+    {
+        path: 'home',
+        component: HomeComponent
+    },
+    ...TodoRoutes
 ];

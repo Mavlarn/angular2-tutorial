@@ -1,0 +1,8 @@
+<p>欢迎</p>
+
+<p>这是一个主页，你不需要登录也能看到。</p>
+
+<div>
+    <button routerLink='/todo/list'>我的任务</button>
+    <button *ngIf="!isLoggedin()" (click)='login()'>登陆</button>
+</div>

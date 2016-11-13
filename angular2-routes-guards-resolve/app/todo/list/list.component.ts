@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+import { ActivatedRoute } from '@angular/router';
 import { Todo } from '../todo';
 import { TodoService } from '../todo.service';
 
@@ -10,7 +11,11 @@ import { TodoService } from '../todo.service';
 })
 export class TodoListComponent {
     newTodo: Todo = new Todo();
-    constructor(private todoService: TodoService) { }
+    todos: Todo[];
+
+    constructor(private todoService: TodoService, private route: ActivatedRoute) {
+        this.todos = this.route.snapshot.data['todos'];
+    }
 
     addTodo() {
         if (!this.newTodo.title.trim()) {
@@ -18,8 +23,5 @@ export class TodoListComponent {
         }
         this.todoService.addTodo(this.newTodo);
         this.newTodo = new Todo();
-    }
-    get todos() {
-        return this.todoService.getAllTodos();
     }
 }
