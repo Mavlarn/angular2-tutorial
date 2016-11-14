@@ -19,7 +19,7 @@ export class MyTodoGuard implements CanActivate, CanActivateChild {
             this.router.navigate(['/home']);
             return false;
         }
-        if (requiredRole == null || this.authService.getAccount().roles.includes(requiredRole)) {
+        if (requiredRole == null || this.authService.hasRole(requiredRole)) {
             return true;
         }
         return false;

@@ -10,22 +10,28 @@ export const TodoRoutes: Route[] = [
     {
         path: 'todo',
         data: {
-            role: 'CUSTOMER'
+            role: 'CUSTOMER',
+            title: '任务'
         },
         canActivateChild: [MyTodoGuard],
-        canActivate: [MyTodoGuard],
         children: [
             {
                 path: 'list',
                 component: TodoListComponent,
                 resolve: {
                     todos: MyTodoResolver
+                },
+                data: {
+                    title: '列表'
                 }
             },
             {
                 path: 'detail/:id',
                 component: TodoDetailComponent,
-                canDeactivate: [ CanLeaveTodoDetailGuard ]
+                canDeactivate: [ CanLeaveTodoDetailGuard ],
+                data: {
+                    title: '详情'
+                }
             }
         ]
     }

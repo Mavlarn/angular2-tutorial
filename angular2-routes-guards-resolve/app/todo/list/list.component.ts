@@ -12,9 +12,11 @@ import { TodoService } from '../todo.service';
 export class TodoListComponent {
     newTodo: Todo = new Todo();
     todos: Todo[];
+    title: string;
 
     constructor(private todoService: TodoService, private route: ActivatedRoute) {
         this.todos = this.route.snapshot.data['todos'];
+        this.title = this.route.data['title'];
     }
 
     addTodo() {

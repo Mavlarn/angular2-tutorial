@@ -9,12 +9,12 @@ import 'rxjs/add/observable/of';
 export class AuthService {
     account: Account;
 
-    // simulation to get account based on cookie or token in localStorage.
-    login(): Observable<Account> {
+    // simulation to login.
+    login(role: string): Observable<Account> {
         let account = new Account();
         account.id = 11;
         account.name = 'super man';
-        account.roles = ['CUSTOMER', 'OPERATOR'];
+        account.roles = [role];
         this.account = account;
         return Observable.of(account);
     }
@@ -23,5 +23,8 @@ export class AuthService {
     }
     isLogdedin(): boolean {
         return this.account && this.account.id != null;
+    }
+    hasRole(role: string): boolean {
+        return this.account && this.account.roles.includes(role);
     }
 }

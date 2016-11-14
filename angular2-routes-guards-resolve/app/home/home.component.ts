@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { AuthService } from '../services/auth.service';
 @Component({
@@ -8,16 +9,22 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomeComponent {
 
-    constructor(private authService: AuthService) {
+    constructor(private authService: AuthService, private router: Router) {
 
     }
     isLoggedin() {
         return this.authService.isLogdedin();
     }
-    login() {
-        return this.authService.login().subscribe(() => {
-            alert('login successfully.')
+    login(role: string) {
+        return this.authService.login(role).subscribe(() => {
+            alert('login successfully as:' + role)
+            if (role === 'CUSTOMER') {
+                this.router.navigate(['/todo/list'])
+            }
         });
+    }
+    hasRole(role: string): boolean {
+        return this.authService.hasRole(role);
     }
 }
 
