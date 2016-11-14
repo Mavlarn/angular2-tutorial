@@ -7,11 +7,11 @@ import { TodoDetailComponent }  from './detail/detail.component';
 import { TodoItemComponent }  from './item/item.component';
 import { TodoService } from './todo.service';
 import { MyTodoResolver } from './todo.resolver';
-import { MyTodoGuard } from './todo.guards';
+import { MyTodoGuard, CanLeaveTodoDetailGuard } from './todo.guards';
 
 @NgModule({
   imports:      [CommonModule, FormsModule ],
   declarations: [TodoListComponent, TodoDetailComponent, TodoItemComponent],
-  providers:    [TodoService, MyTodoResolver, MyTodoGuard]
+  providers:    [TodoService, MyTodoResolver, MyTodoGuard, CanLeaveTodoDetailGuard]
 })
 export class TodoModule {}

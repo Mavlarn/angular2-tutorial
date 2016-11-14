@@ -3,7 +3,7 @@ import { Route } from '@angular/router';
 import { TodoListComponent } from './list/list.component';
 import { TodoDetailComponent } from './detail/detail.component';
 
-import { MyTodoGuard } from './todo.guards';
+import { MyTodoGuard, CanLeaveTodoDetailGuard } from './todo.guards';
 import { MyTodoResolver } from './todo.resolver';
 
 export const TodoRoutes: Route[] = [
@@ -24,7 +24,8 @@ export const TodoRoutes: Route[] = [
             },
             {
                 path: 'detail/:id',
-                component: TodoDetailComponent
+                component: TodoDetailComponent,
+                canDeactivate: [ CanLeaveTodoDetailGuard ]
             }
         ]
     }

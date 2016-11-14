@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, CanActivateChild, Router,
+import { CanActivate, CanActivateChild, CanDeactivate, Router,
     ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { AuthService } from '../services/auth.service';
+import { TodoDetailComponent } from './detail/detail.component';
 
 @Injectable()
 export class MyTodoGuard implements CanActivate, CanActivateChild {
@@ -27,5 +28,12 @@ export class MyTodoGuard implements CanActivate, CanActivateChild {
     canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         console.log('can activate child: ', childRoute.url[0].path);
         return this.canActivate(childRoute, state);
+    }
+}
+
+@Injectable()
+export class CanLeaveTodoDetailGuard implements CanDeactivate<TodoDetailComponent> {
+    canDeactivate(component: TodoDetailComponent, route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        return confirm('Confirm?');
     }
 }
