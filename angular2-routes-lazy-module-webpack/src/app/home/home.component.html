@@ -1,0 +1,13 @@
+<p>欢迎</p>
+
+<p>这是一个主页，你不需要登录也能看到。</p>
+
+<div>
+    <button routerLink='/todo/list'>我的任务</button>
+    <div *ngIf="hasRole('ADMIN')">这是管理员看到的页面。</div>
+
+    <button *ngIf="!isLoggedin()" (click)="login('ADMIN')">管理员登陆</button>
+    <button *ngIf="!isLoggedin()" (click)="login('CUSTOMER')">用户登陆</button>
+
+    <button routerLink='/lazy'>Lazy模块</button>
+</div>

@@ -1,0 +1,16 @@
+
+.form-group label {
+    display: inline-block;
+    width: 100px;
+}
+.form-group p {
+    display: inline-block;
+}
+a {
+    border: solid 1px gray;
+    border-radius: 3px;
+    padding: 5px 20px;
+    text-decoration: none;
+    color: gray;
+    cursor: pointer;
+}
